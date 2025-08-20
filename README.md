@@ -1,6 +1,6 @@
-# Teknorix Jobs API (Advanced .NET 8)
+# Jobs API 
 
-Production-ready solution for the interview test: Jobs API with Clean Architecture, CQRS/MediatR, EF Core, JWT auth, Swagger, Validation, Tests.
+Solution for the interview test
 
 ## Quick Start
 ```bash
@@ -34,5 +34,5 @@ Use the returned JWT as `Authorization: Bearer <token>`
 dotnet test
 ```
 
-## Database Script (optional)
-If you prefer running SQL manually, see `db/schema.sql`
+## Db Script
+Running SQL manually, see `db/schema.sql`
