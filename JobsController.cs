@@ -10,7 +10,7 @@ public class JobsController : ControllerBase
     private readonly AppDbContext _db;
     public JobsController(AppDbContext db) => _db = db;
 
-    /// <summary>Get all jobs.</summary>
+
     [HttpGet]
     [ProducesResponseType(typeof(IEnumerable<Job>), 200)]
     public async Task<ActionResult<IEnumerable<Job>>> GetAll()
@@ -18,8 +18,6 @@ public class JobsController : ControllerBase
         var items = await _db.Jobs.AsNoTracking().ToListAsync();
         return Ok(items);
     }
-
-    /// <summary>Get a job by id.</summary>
     [HttpGet("{id:int}")]
     [ProducesResponseType(typeof(Job), 200)]
     [ProducesResponseType(404)]
@@ -30,8 +28,7 @@ public class JobsController : ControllerBase
         return Ok(job);
     }
 
-    /// <summary>Create a new job.</summary>
-    [HttpPost]
+        [HttpPost]
     [ProducesResponseType(typeof(Job), 201)]
     [ProducesResponseType(400)]
     public async Task<ActionResult<Job>> Create([FromBody] Job job)
@@ -42,7 +39,6 @@ public class JobsController : ControllerBase
         return CreatedAtAction(nameof(GetById), new { id = job.Id }, job);
     }
 
-    /// <summary>Update an existing job.</summary>
     [HttpPut("{id:int}")]
     [ProducesResponseType(204)]
     [ProducesResponseType(400)]
@@ -57,7 +53,6 @@ public class JobsController : ControllerBase
         return NoContent();
     }
 
-    /// <summary>Delete a job by id.</summary>
     [HttpDelete("{id:int}")]
     [ProducesResponseType(204)]
     [ProducesResponseType(404)]
@@ -69,4 +64,5 @@ public class JobsController : ControllerBase
         await _db.SaveChangesAsync();
         return NoContent();
     }
+
 }
